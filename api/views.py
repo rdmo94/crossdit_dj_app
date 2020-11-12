@@ -13,7 +13,7 @@ def welcome(request):
 
 @api_view(["GET"])
 def getReading(request):
-    client = MongoClient('mongodb+srv://crossdit:crossdit@cluster0.yqnrt.mongodb.net/crossdit?retryWrites=true&w=majority')
+    client = MongoClient('mongodb+srv://crossdit:crossdit@cluster0.yqnrt.mongodb.net/crossdit?retryWrites=true&w=majority', host='rdmo94.pythonanywhere.com', port=8000)
     db = client.crossdit
     collection = db.data
     result = collection.aggregate([{ "$sample" : { "size" : 1 } }])
