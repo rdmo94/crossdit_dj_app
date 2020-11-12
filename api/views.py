@@ -1,9 +1,7 @@
 from django.shortcuts import render
-
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from pymongo import MongoClient
-from bson.json_util import dumps
 import pymongo
 from bson.objectid import ObjectId
 
@@ -15,7 +13,7 @@ def welcome(request):
 
 @api_view(["GET"])
 def getReading(request):
-    client = MongoClient('mongodb+srv://crossdit:crossdit@cluster0.yqnrt.mongodb.net/test')
+    client = MongoClient('mongodb+srv://crossdit:crossdit@cluster0.yqnrt.mongodb.net/crossdit?retryWrites=true&w=majority')
     db = client.crossdit
     collection = db.data
     result = collection.aggregate([{ "$sample" : { "size" : 1 } }])
