@@ -14,7 +14,8 @@ def welcome(request):
 @api_view(["GET"])
 def getReading(request):
     # client = MongoClient('mongodb+srv://crossdit:crossdit@cluster0.yqnrt.mongodb.net/crossdit?retryWrites=true&w=majority&authSource=admin', connectTimeoutMS=30000, socketTimeoutMS=None, socketKeepAlive=True, connect=False, maxPoolsize=1)
-    client = MongoClient('mongodb://crossdit:crossdit@cluster0-shard-00-00.yqnrt.mongodb.net:27017,cluster0-shard-00-01.yqnrt.mongodb.net:27017,cluster0-shard-00-02.yqnrt.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-it1cv8-shard-0&authSource=admin&retryWrites=true&w=majority', connectTimeoutMS=30000, socketTimeoutMS=None, socketKeepAlive=True, connect=False, maxPoolsize=1)
+    # client = MongoClient('mongodb://crossdit:crossdit@cluster0-shard-00-00.yqnrt.mongodb.net:27017,cluster0-shard-00-01.yqnrt.mongodb.net:27017,cluster0-shard-00-02.yqnrt.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-it1cv8-shard-0&authSource=admin&retryWrites=true&w=majority', connectTimeoutMS=30000, socketTimeoutMS=None, socketKeepAlive=True, connect=False, maxPoolsize=1)
+    client = MongoClient('mongodb+srv://rdmo:Rdmrdm65@cluster0.yqnrt.mongodb.net/crossdit?retryWrites=true&w=majority', connectTimeoutMS=30000, socketTimeoutMS=None, socketKeepAlive=True)
     db = client.crossdit
     collection = db.data
     result = collection.aggregate([{ "$sample" : { "size" : 1 } }])
